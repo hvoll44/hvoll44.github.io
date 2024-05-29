@@ -10,6 +10,11 @@ header {
     padding: 10px 0;
     text-align: center;
 }
+
+.profilename {
+    color: #fff;
+}
+
 section {
     padding: 20px;
     margin: 20px;
