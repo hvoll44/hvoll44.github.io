@@ -3,29 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hans Voll - Software Developer</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Software Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #34495E;
+            --accent-color: #7F8C8D;
+            --light-gray: #BDC3C7;
+            --background-color: #ECF0F1;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 1rem;
+        }
+        header h1 {
+            margin: 0.5rem 0;
+        }
+        header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        section {
+            margin-bottom: 2rem;
+        }
+        section h2 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .app-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .app-links img {
+            width: 150px;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            header {
+                text-align: center;
+            }
+            .app-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </head>
 <body>
     <header>
-        <h1 class="profilename">Hans Voll</h1>
-        <p>Software Developer</p>
+        <img src="/images/avatar.png" alt="Your Avatar">
+        <h1>Hi, my name is Hans Voll.</h1>
+        <p>I have a passion for software development, and writing code that aligns with both business goals and technical excellence.</p>
     </header>
-    <section>
-        <h2>About Me</h2>
-        <p>Full-stack developer with experience designing, creating, and maintaining software applications. Skilled in developing object-oriented software with an emphasis on loose coupling and extensibility. Passion for writing clean code that is both readable and easy to maintain.</p>
-    </section>
-    <section>
-        <h2>Projects</h2>
-        <ul>
-            <li><a href="https://wonderful-sky-0852bf210.azurestaticapps.net/">Hobby Website</a> - Sandbox enviroment for testing new ideas.</li>
-            <li><a href="https://github.com/hvoll44">Github profile</a> - Various projects.</li>
-        </ul>
-    </section>
-    <section>
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:hvoll44@gmail.com">hvoll44@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/hans-voll/">LinkedIn Profile</a></p>
-    </section>
+    <main>
+        <section>
+            <h2>Philosophy on Software Development</h2>
+            <p>I believe in designing and creating software that is both functional and elegant. Clean, readable code is essential for maintaining and scaling applications, and collaboration with stakeholders ensures that the solutions meet user needs. Continuous learning and innovation drive my passion for software development.</p>
+        </section>
+        <section>
+            <h2>Weather View App</h2>
+            <p>Weather info powered by National Weather Service.</p>
+            <div class="app-links">
+                <a href="https://apps.apple.com/app/id123456789" target="_blank">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.example.weatherview" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+                </a>
+            </div>
+        </section>
+        <section>
+            <h2>ScoreCard App</h2>
+            <p>Track scores for any type of game. Sync in real-time with other players.</p>
+            <div class="app-links">
+                <a href="https://apps.apple.com/app/id987654321" target="_blank">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.example.scorecard" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+                </a>
+            </div>
+        </section>
+        <section>
+            <h2>Connect with Me</h2>
+            <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="hans-voll" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/hans-voll?trk=profile-badge"></a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="year"></span> Hans Voll. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
