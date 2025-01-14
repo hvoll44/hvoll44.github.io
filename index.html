@@ -3,133 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software Developer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Hans' Portfolio</title>
     <style>
-        :root {
-            --primary-color: #2C3E50;
-            --secondary-color: #34495E;
-            --accent-color: #7F8C8D;
-            --light-gray: #BDC3C7;
-            --background-color: #ECF0F1;
-        }
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--background-color);
-            color: var(--primary-color);
-            line-height: 1.6;
+            background-color: #f9f9f9;
         }
         header {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: var(--primary-color);
+            background-color: #333;
             color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
         }
         header img {
             border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            margin-bottom: 1rem;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 20px;
         }
         header h1 {
-            margin: 0.5rem 0;
+            font-size: 36px;
+            margin: 10px 0;
         }
-        header p {
-            font-size: 1.1rem;
-            max-width: 600px;
+        header h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin: 10px 0;
         }
-        main {
+        .content {
             max-width: 900px;
-            margin: 2rem auto;
-            padding: 1rem;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        section {
-            margin-bottom: 2rem;
+        .section {
+            margin: 20px 0;
         }
-        section h2 {
-            font-size: 1.5rem;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+        .section img {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%;
+            border-radius: 8px;
         }
-        .app-links {
-            display: flex;
-            gap: 1rem;
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
         }
-        .app-links img {
-            width: 150px;
+        .section p {
+            text-align: center;
+            margin: 5px 0;
         }
         footer {
             text-align: center;
-            padding: 1rem;
-            background: var(--primary-color);
+            padding: 20px;
+            background-color: #333;
             color: white;
-            margin-top: 2rem;
-        }
-        @media (max-width: 768px) {
-            header {
-                text-align: center;
-            }
-            .app-links {
-                flex-direction: column;
-                align-items: center;
-            }
+            margin-top: 40px;
         }
     </style>
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </head>
 <body>
     <header>
-        <img src="/images/avatar.png" alt="Your Avatar">
-        <h1>Hi, my name is Hans Voll.</h1>
-        <p>I have a passion for software development, and writing code that aligns with both business goals and technical excellence.</p>
+        <img src="./images/avatar.png" alt="Avatar">
+        <h1>Hi, My Name is Hans</h1>
+        <h2>Software Developer</h2>
     </header>
-    <main>
-        <section>
-            <h2>Philosophy on Software Development</h2>
-            <p>I believe in designing and creating software that is both functional and elegant. Clean, readable code is essential for maintaining and scaling applications, and collaboration with stakeholders ensures that the solutions meet user needs. Continuous learning and innovation drive my passion for software development.</p>
-        </section>
-        <section>
-            <h2>Weather View App</h2>
-            <p>Weather info powered by National Weather Service.</p>
-            <div class="app-links">
-                <a href="https://apps.apple.com/app/id123456789" target="_blank">
-                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.example.weatherview" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
-                </a>
-            </div>
-        </section>
-        <section>
-            <h2>ScoreCard App</h2>
-            <p>Track scores for any type of game. Sync in real-time with other players.</p>
-            <div class="app-links">
-                <a href="https://apps.apple.com/app/id987654321" target="_blank">
-                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.example.scorecard" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
-                </a>
-            </div>
-        </section>
-        <section>
-            <h2>Connect with Me</h2>
-            <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="hans-voll" data-version="v1">
-                <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/hans-voll?trk=profile-badge"></a>
-            </div>
-        </section>
-    </main>
+
+    <div class="content">
+        <div class="section">
+            <h2>Hobby Apps I’ve Published</h2>
+            <p>I have a passion for creating simple solutions to solve complex problems.</p>
+        </div>
+
+        <div class="section">
+            <h2>ScoreCard</h2>
+            <img src="./images/scorecard_app_icon.png" alt="ScoreCard App Icon">
+            <p>Track scores for any type of game!</p>
+            <p>Built on a cross-platform framework using .NET MAUI - Blazor Hybrid. Implements MVVM architecture, Azure data storage, and SignalR for real-time messaging between users. Data is stored on the user’s device locally but has the option to link with others for real-time data concurrency by utilizing Azure services.</p>
+            <img src="./images/scorecard_screenshot.png" alt="ScoreCard Screenshot">
+        </div>
+
+        <div class="section">
+            <h2>Weather View</h2>
+            <img src="./images/weatherview_app_icon.png" alt="Weather View App Icon">
+            <p>Intuitive app powered by National Weather Service!</p>
+            <p>Leveraged Flutter framework with the Dart programming language. Retrieves data from the weather.gov API to supply forecasts by the National Weather Service. Utilized device GPS location to automatically retrieve weather for the user's current location.</p>
+            <img src="./images/weatherview_screenshot.png" alt="Weather View Screenshot">
+        </div>
+
+        <div class="section">
+            <p>I’ve been writing code professionally for over 7 years. Through that time I’ve worked on geophysical data modeling, creating mobile apps, cloud architecture, ETL programs, product APIs, and more.</p>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; <span id="year"></span> Hans Voll. All Rights Reserved.</p>
+        &copy; 2025 Hans' Portfolio
     </footer>
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>
