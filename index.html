@@ -20,6 +20,16 @@
             color: var(--text-color);
             font-family: Arial, Helvetica, sans-serif
         }
+        * h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0;
+        }
+        * h2 {
+            margin-bottom: 10px;
+        }
+        * h3 {
+            margin-bottom: 5px;
+        }
         .webpage {
             display: flex;
             flex-direction: column;
@@ -27,15 +37,12 @@
             justify-content: center;
         }
         .webpage-content {
-            max-width: 32rem;
-            padding-top: 3rem;
+            max-width: 35rem;
         }
         .header {
             display: flex;
             flex-direction: row;
             align-items: center;
-            margin-bottom: 2rem;
-
         }
         .header-avatar img {
             border-radius: 50%;
@@ -58,11 +65,9 @@
         .experience {
             display: flex;
             flex-direction: column;
-            margin-bottom: 2rem;
         }
         .experience-title {
             font-size: large;
-            margin-bottom: 0.5rem;
         }
         .experience-description {
             font-size: medium;
@@ -73,7 +78,6 @@
         }
         .projects-title {
             font-size: large;
-            margin-bottom: 1rem;
         }
         .project {
             display: flex;
@@ -103,12 +107,12 @@
         }
         .project-text-title {
             font-size: large;
-            margin-bottom: 0.5rem;
         }
         .project-text-description {
             font-size: medium;
         }
         .app-links {
+            flex: 1;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
@@ -120,9 +124,6 @@
         .app-links img {
             width: 150px;
         }
-        .linkedin {
-
-        }
         .divider {
             height: 1px;
             background-color: var(--light-gray);
@@ -130,6 +131,61 @@
             margin-top: 2rem;
             margin-bottom: 2rem;
         }
+        .connect {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .connect-options {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1rem;
+        }
+        .github {
+            width: 300px;
+            height: 250px;
+            background-color: #151b23;            
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border-radius: 11px;
+            clip-path: border-box;
+        }
+        .github-header {
+            background-color: #25292e;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+        }
+        .github-header-logo {
+            width: 40px;
+            height: 40px;
+        }
+        .github-body {
+            height: inherit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .github-body-link {
+            text-decoration: none;
+            font-size: 1rem;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .github-body-link:hover {
+            background-color: #25292e;
+            border: 3px solid #0366d6;
+        }
+
     </style>
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </head>
@@ -142,7 +198,7 @@
                 </div>
                 <div class="header-text">
                     <div class="header-text-title">
-                        Hi My Name is Hans
+                        <h1>Hi My Name is Hans</h1>
                     </div>
                     <div class="header-text-subtitle">
                         I have passion for creating simple solutions to solve complex problems
@@ -151,15 +207,15 @@
             </div>
             <div class="experience">
                 <div class="experience-title">
-                    Software Developer
+                    <h2>Software Developer</h2>
                 </div>
                 <div class="experience-description">
-                    I’ve been writing code professionally for over 7 years. Through that time I’ve worked on geophysical data modeling, creative mobile apps, cloud architecture, ETL programs, product APIs, and more.
+                    <p>I’ve been writing code professionally for over 7 years. Through that time I’ve worked on geophysical data modeling, creative mobile apps, cloud architecture, ETL programs, product APIs, and more.</p>                    
                 </div>
             </div>
             <div class="projects">
                 <div class="projects-title">
-                    Hobby Apps I’ve published
+                    <h2>Hobby Apps I’ve published</h2>
                 </div>
                 <div class="project">
                     <div class="project-images">
@@ -172,12 +228,11 @@
                     </div>
                     <div class="project-text">
                         <div class="project-text-title">
-                            Scorecard
+                            <h3>Scorecard</h3>
                         </div>
                         <div class="project-text-description">
-                            Track scores for any type of game!
-    
-                            Built on cross-platform framework using .NET MAUI - Blazor Hybrid. Implements MVVM architecture, Azure data storage, and SignalR for real-time messaging between users. Data is stored on user’s device locally, but has the option to link with other’s for real time data concurrency by utilizing Azure services.
+                            <p>Track scores for any type of game!</p>
+                            <p>Built on cross-platform framework using .NET MAUI - Blazor Hybrid. Implements MVVM architecture, Azure data storage, and SignalR for real-time messaging between users. Data is stored on user’s device locally, but has the option to link with other’s for real time data concurrency by utilizing Azure services.</p>
                         </div>
                         <div class="app-links">
                             <a href="https://apps.apple.com/app/id987654321" target="_blank">
@@ -201,12 +256,12 @@
                     </div>
                     <div class="project-text">
                         <div class="project-text-title">
-                            Weather View
+                            <h3>Weather View</h3>
                         </div>
                         <div class="project-text-description">
-                            Intuitive app powered by National Weather Service!
+                            <p>Intuitive app powered by National Weather Service!</p>
     
-                            Leveraged Flutter framework with the dart programming language. Retrieves data from weather.gov API to supply forecasts by the National Weather Service. Utilized device GPS location to automatically retrieve weather for the users current location.  
+                            <p>Leveraged Flutter framework with the dart programming language. Retrieves data from weather.gov API to supply forecasts by the National Weather Service. Utilized device GPS location to automatically retrieve weather for the users current location.</p>
                         </div>
                         <div class="app-links">
                             <a href="https://apps.apple.com/app/id987654321" target="_blank">
@@ -219,10 +274,21 @@
                     </div>
                 </div>
             </div>
-            <div class="linkedin">
+            <div class="connect">
                 <h2>Connect with Me</h2>
-                <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="hans-voll" data-version="v1">
-                    <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/hans-voll?trk=profile-badge"></a>
+                <div class="connect-options">
+                    <div class="github">
+                        <div class="github-header">
+                            <img src="images/github_logo.png" alt="GitHub Logo" class="github-header-logo">
+                            GitHub
+                        </div>
+                        <div class="github-body">
+                            <a href="https://github.com/hvoll44" class="github-body-link" target="_blank">Visit My GitHub</a>
+                        </div>
+                    </div>
+                    <div class="linkedin">
+                        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="VERTICAL" data-vanity="hans-voll" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/hans-voll?trk=profile-badge"></a></div>
+                    </div>
                 </div>
             </div>
         </div>       
