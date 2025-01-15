@@ -119,7 +119,6 @@
             align-items: center;
             padding: 2rem;
             gap: 2rem;
-            min-height: 5rem;
         }
         .app-links img {
             width: 150px;
@@ -140,6 +139,7 @@
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
+            flex-wrap: wrap;
             align-items: center;
             gap: 1rem;
         }
@@ -185,6 +185,30 @@
             background-color: #25292e;
             border: 3px solid #0366d6;
         }
+        @media (max-width: 768px) {
+        .header-avatar img {
+            display: none;
+        }
+        .app-links {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 1rem;
+            gap: 1rem;
+        }
+        .project-images-icon img {
+            border-radius: 25%;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+        }
+        .project-images-screenshot img {
+            width: 60px;
+            object-fit: cover;
+        }
+}
 
     </style>
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
