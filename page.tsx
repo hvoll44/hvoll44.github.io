@@ -139,7 +139,7 @@ export default function Portfolio() {
             >
               Hi, I'm{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
-                DevName
+                Hans
               </span>
             </motion.h1>
             <motion.p
