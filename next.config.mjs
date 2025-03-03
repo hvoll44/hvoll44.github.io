@@ -9,7 +9,6 @@ try {
 const nextConfig = {
   output: 'export',
   distDir: '.next',
-  basePath: '',
   images: {
     unoptimized: true,
     remotePatterns: [],
@@ -20,13 +19,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Remove experimental features that might cause issues
   trailingSlash: true,
   reactStrictMode: true,
-  // Ensure static export
   experimental: {
     appDir: true,
-    outputFileTracingRoot: process.env.NEXT_PUBLIC_BASE_PATH || '.',
   },
 }
 
