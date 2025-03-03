@@ -51,6 +51,8 @@ jobs:
           ls -la
           echo "Checking .next directory:"
           ls -la .next || echo ".next directory not found"
+          echo "Moving output to out directory..."
+          mv .next/standalone out
           echo "Checking out directory:"
           ls -la out || echo "out directory not found"
       - name: Upload artifact
