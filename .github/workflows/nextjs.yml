@@ -14,6 +14,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  NEXT_TELEMETRY_DISABLED: 1
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,15 +33,23 @@ jobs:
         with:
           static_site_generator: next
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: |
+          npm clean-install
+          npm list next
       - name: Build with Next.js
         run: |
-          echo "Building Next.js app..."
+          echo "Node version: $(node -v)"
+          echo "NPM version: $(npm -v)"
+          echo "Next.js config:"
+          cat next.config.mjs
+          echo "Starting build..."
           npm run build
-          echo "Checking build output..."
+          echo "Build complete. Listing directories:"
           ls -la
-          echo "Checking for out directory..."
-          ls -la ./out || echo "out directory not found"
+          echo "Checking .next directory:"
+          ls -la .next || echo ".next directory not found"
+          echo "Checking out directory:"
+          ls -la out || echo "out directory not found"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

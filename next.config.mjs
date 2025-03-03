@@ -8,8 +8,10 @@ try {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  basePath: '',
   images: {
     unoptimized: true,
+    remotePatterns: [],
   },
   eslint: {
     ignoreDuringBuilds: true,
@@ -19,6 +21,7 @@ const nextConfig = {
   },
   // Remove experimental features that might cause issues
   trailingSlash: true,
+  reactStrictMode: true,
 }
 
 mergeConfig(nextConfig, userConfig)
