@@ -32,9 +32,12 @@ jobs:
         uses: actions/configure-pages@v4
         with:
           static_site_generator: next
+      - name: Clean npm cache
+        run: npm cache clean --force
       - name: Install dependencies
         run: |
-          npm clean-install
+          rm -rf node_modules package-lock.json
+          npm install
           npm list next
       - name: Build with Next.js
         run: |
