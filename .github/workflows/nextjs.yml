@@ -41,13 +41,16 @@ jobs:
           echo "Node version: $(node -v)"
           echo "NPM version: $(npm -v)"
           echo "Starting build..."
+          mkdir -p out
           npm run build
-          echo "Build complete. Listing directories:"
+          echo "Build complete. Checking directory structure:"
           ls -la
           echo "Contents of out directory:"
-          ls -la out
-          echo "Ensuring index.html exists:"
-          test -f out/index.html || echo "Warning: index.html not found!"
+          ls -la out || echo "out directory is empty"
+          echo "Contents of out/_next directory:"
+          ls -la out/_next || echo "_next directory not found"
+          echo "Checking for index.html:"
+          find out -name "index.html"
       - name: Fix permissions
         run: chmod -R a+rx out
       - name: Upload artifact

@@ -9,10 +9,8 @@ try {
 const nextConfig = {
   output: 'export',
   distDir: '.next',
-  basePath: '',
   images: {
     unoptimized: true,
-    remotePatterns: [],
   },
   eslint: {
     ignoreDuringBuilds: true,
@@ -22,7 +20,6 @@ const nextConfig = {
   },
   trailingSlash: true,
   reactStrictMode: true,
-  assetPrefix: '.',
 }
 
 // Create the out directory if it doesn't exist
