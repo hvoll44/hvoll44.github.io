@@ -7,7 +7,7 @@ export default function ThemeProvider({
 }: {
   children: React.ReactNode
 }) {
-  const [theme, setTheme] = useState<"light" | "dark">("light")
+  const [theme, setTheme] = useState<"light" | "dark">("dark")
 
   useEffect(() => {
     // Check for user preference
