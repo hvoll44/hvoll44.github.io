@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform, useInView } from "framer-motion"
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero")
@@ -17,6 +17,22 @@ export default function Home() {
   const projectsRef = useRef<HTMLDivElement>(null)
   const educationRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
+
+  // Add refs for animation triggers
+  const aboutCardsRef = useRef<HTMLDivElement>(null)
+  const experienceTimelineRef = useRef<HTMLDivElement>(null)
+  const skillsCardsRef = useRef<HTMLDivElement>(null)
+  const projectsCardsRef = useRef<HTMLDivElement>(null)
+  const educationCardsRef = useRef<HTMLDivElement>(null)
+  const contactCardsRef = useRef<HTMLDivElement>(null)
+
+  // Add useInView hooks for scroll animations
+  const aboutCardsInView = useInView(aboutCardsRef, { once: true, margin: "-100px" })
+  const experienceTimelineInView = useInView(experienceTimelineRef, { once: true, margin: "-100px" })
+  const skillsCardsInView = useInView(skillsCardsRef, { once: true, margin: "-100px" })
+  const projectsCardsInView = useInView(projectsCardsRef, { once: true, margin: "-100px" })
+  const educationCardsInView = useInView(educationCardsRef, { once: true, margin: "-100px" })
+  const contactCardsInView = useInView(contactCardsRef, { once: true, margin: "-100px" })
 
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0])
@@ -105,6 +121,33 @@ export default function Home() {
       color: "from-green-500 to-emerald-400",
     },
   ]
+
+  // Add animation variants
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    })
+  }
+
+  const timelineVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    })
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
@@ -324,40 +367,28 @@ export default function Home() {
                 processes.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 w-full">
-                <Card className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 hover:shadow-md transition-shadow">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-xl">Full Stack Development</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">
-                      Building complete solutions from database design to user interfaces with a focus on performance
-                      and maintainability.
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 hover:shadow-md transition-shadow">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-xl">Cloud Architecture</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">
-                      Designing and implementing scalable cloud solutions using Azure and AWS services for optimal
-                      performance.
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 hover:shadow-md transition-shadow">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-xl">Data Engineering</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">
-                      Creating efficient ETL pipelines and data processing systems to handle high-volume datasets with
-                      accuracy.
-                    </p>
-                  </CardContent>
-                </Card>
+              <div ref={aboutCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 w-full">
+                {[0, 1, 2].map((index) => (
+                  <motion.div
+                    key={index}
+                    custom={index}
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate={aboutCardsInView ? "visible" : "hidden"}
+                  >
+                    <Card className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2">
+                        <CardTitle className="text-xl">Full Stack Development</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-muted-foreground">
+                          Building complete solutions from database design to user interfaces with a focus on performance
+                          and maintainability.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
@@ -383,9 +414,16 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mx-auto max-w-5xl mt-16">
-              <div className="space-y-12">
-                <div className="relative pl-8 border-l border-gray-200 dark:border-gray-800">
+            <div ref={experienceTimelineRef} className="space-y-12">
+              {[0, 1, 2].map((index) => (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  variants={timelineVariants}
+                  initial="hidden"
+                  animate={experienceTimelineInView ? "visible" : "hidden"}
+                  className="relative pl-8 border-l border-gray-200 dark:border-gray-800"
+                >
                   <div className="absolute w-4 h-4 bg-primary rounded-full -left-[9px] top-1"></div>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
@@ -420,70 +458,8 @@ export default function Home() {
                       </ul>
                     </div>
                   </div>
-                </div>
-
-                <div className="relative pl-8 border-l border-gray-200 dark:border-gray-800">
-                  <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-1"></div>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-2xl font-bold">Full Stack Developer</h3>
-                      <Badge variant="outline" className="bg-blue-500/10 text-blue-500 border-blue-500/20">
-                        Feb 2021 - Mar 2022
-                      </Badge>
-                    </div>
-                    <p className="text-lg text-muted-foreground">CDYNE Corp.</p>
-                    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
-                      <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-400">
-                        <li>
-                          Designed, developed, and maintained software applications using C# and ASP.Net. Worked in full
-                          stack capacity on both front end websites and back end applications.
-                        </li>
-                        <li>
-                          Created single-page applications in Blazor and Angular. Incorporated Entity Framework on both
-                          code-first and database-first projects.
-                        </li>
-                        <li>
-                          Created and maintained databases using Microsoft SQL Server. Designed tables, wrote stored
-                          procedures, created user defined types, and utilized data views.
-                        </li>
-                        <li>
-                          Built and consumed RESTful web APIs using HTTP methods. Utilized Swagger for automated
-                          documentation and Postman for testing endpoints.
-                        </li>
-                        <li>
-                          Collaborated with team on development projects using Azure DevOps. Incorporated Git source
-                          control, work tracking, and continuous integration and delivery.
-                        </li>
-                        <li>
-                          Used Identity Server to provide single-sign-on functionality across multiple software
-                          products. Used JWT Authentication with web tokens, claims, and schemes to verify access.
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative pl-8 border-l border-gray-200 dark:border-gray-800">
-                  <div className="absolute w-4 h-4 bg-purple-500 rounded-full -left-[9px] top-1"></div>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-2xl font-bold">Geophysicist</h3>
-                      <Badge variant="outline" className="bg-purple-500/10 text-purple-500 border-purple-500/20">
-                        May 2017 - Jan 2021
-                      </Badge>
-                    </div>
-                    <p className="text-lg text-muted-foreground">NAEVA Geophysics Inc.</p>
-                    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
-                      <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-400">
-                        <li>Automated ETL workflows with Python scripts enabling seamless flow across data sources.</li>
-                        <li>
-                          Designed and developed a Xamarin mobile app with local data storage functionality in SQLite.
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -504,32 +480,37 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mx-auto max-w-5xl mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div ref={skillsCardsRef} className="mx-auto max-w-5xl mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
               {skillCategories.map((category, index) => (
-                <Card
+                <motion.div
                   key={index}
-                  className="bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-gray-200 dark:border-gray-800 overflow-hidden"
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate={skillsCardsInView ? "visible" : "hidden"}
                 >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-bl-full"></div>
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-primary/10 text-primary">{category.icon}</div>
-                      <CardTitle className="text-xl">{category.name}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-2 gap-3">
-                      {category.skills.map((skill, skillIndex) => (
-                        <div
-                          key={skillIndex}
-                          className="flex items-center p-2 rounded-lg bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800"
-                        >
-                          <span className="text-sm font-medium">{skill}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                  <Card className="bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-bl-full"></div>
+                    <CardHeader>
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-primary/10 text-primary">{category.icon}</div>
+                        <CardTitle className="text-xl">{category.name}</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-2 gap-3">
+                        {category.skills.map((skill, skillIndex) => (
+                          <div
+                            key={skillIndex}
+                            className="flex items-center p-2 rounded-lg bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800"
+                          >
+                            <span className="text-sm font-medium">{skill}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -555,10 +536,14 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mx-auto max-w-6xl mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div ref={projectsCardsRef} className="mx-auto max-w-6xl mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
               {projects.map((project, index) => (
-                <div
+                <motion.div
                   key={index}
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate={projectsCardsInView ? "visible" : "hidden"}
                   className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg"
                 >
                   <div
@@ -579,7 +564,7 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -601,76 +586,50 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mx-auto max-w-4xl mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-700"></div>
-                <div className="p-8">
-                  <div className="mb-4 inline-block rounded-lg bg-blue-100 dark:bg-blue-900/30 p-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-blue-600 dark:text-blue-400"
-                    >
-                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">Geology (BS)</h3>
-                  <p className="text-lg text-muted-foreground mb-4">Radford University</p>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">Graduation</span>
-                      <span className="text-sm font-medium">May 2017</span>
+            <div ref={educationCardsRef} className="mx-auto max-w-4xl mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[0, 1].map((index) => (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate={educationCardsInView ? "visible" : "hidden"}
+                  className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg"
+                >
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-700"></div>
+                  <div className="p-8">
+                    <div className="mb-4 inline-block rounded-lg bg-blue-100 dark:bg-blue-900/30 p-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-blue-600 dark:text-blue-400"
+                      >
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                      </svg>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">GPA</span>
-                      <span className="text-sm font-medium">3.6</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-purple-700"></div>
-                <div className="p-8">
-                  <div className="mb-4 inline-block rounded-lg bg-purple-100 dark:bg-purple-900/30 p-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-purple-600 dark:text-purple-400"
-                    >
-                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">Economics (BA)</h3>
-                  <p className="text-lg text-muted-foreground mb-4">Metropolitan State University</p>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">Graduation</span>
-                      <span className="text-sm font-medium">May 2011</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">GPA</span>
-                      <span className="text-sm font-medium">3.8</span>
+                    <h3 className="text-2xl font-bold mb-2">Geology (BS)</h3>
+                    <p className="text-lg text-muted-foreground mb-4">Radford University</p>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">Graduation</span>
+                        <span className="text-sm font-medium">May 2017</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">GPA</span>
+                        <span className="text-sm font-medium">3.6</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -695,9 +654,16 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mx-auto max-w-4xl mt-16">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg">
+            <div ref={contactCardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[0, 1].map((index) => (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate={contactCardsInView ? "visible" : "hidden"}
+                  className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg"
+                >
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-blue-600"></div>
                   <div className="p-8">
                     <div className="mb-6 inline-block rounded-full bg-primary/10 p-3">
@@ -707,29 +673,17 @@ export default function Home() {
                     <p className="text-xl text-primary">(719) 429-1997</p>
                     <p className="mt-4 text-sm text-muted-foreground">Feel free to call during business hours</p>
                   </div>
-                </div>
+                </motion.div>
+              ))}
+            </div>
 
-                <div className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-700"></div>
-                  <div className="p-8">
-                    <div className="mb-6 inline-block rounded-full bg-blue-500/10 p-3">
-                      <Mail className="h-6 w-6 text-blue-500" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-2">Email</h3>
-                    <p className="text-xl text-blue-500">hvoll44@gmail.com</p>
-                    <p className="mt-4 text-sm text-muted-foreground">I'll respond to your message promptly</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-12 text-center">
-                <Button asChild size="lg" className="group">
-                  <Link href="mailto:hvoll44@gmail.com">
-                    Send Me a Message
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-              </div>
+            <div className="mt-12 text-center">
+              <Button asChild size="lg" className="group">
+                <Link href="mailto:hvoll44@gmail.com">
+                  Send Me a Message
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
