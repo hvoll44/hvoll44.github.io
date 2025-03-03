@@ -45,9 +45,11 @@ jobs:
           echo "Build complete. Listing directories:"
           ls -la
           echo "Contents of out directory:"
-          ls -la out || echo "out directory not found"
-          echo "Contents of out/_next directory:"
-          ls -la out/_next || echo "_next directory not found"
+          ls -la out
+          echo "Ensuring index.html exists:"
+          test -f out/index.html || echo "Warning: index.html not found!"
+      - name: Fix permissions
+        run: chmod -R a+rx out
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
