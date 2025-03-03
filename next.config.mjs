@@ -8,7 +8,6 @@ try {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  distDir: 'out',
   images: {
     unoptimized: true,
   },
@@ -18,11 +17,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  experimental: {
-    webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
-  },
+  // Remove experimental features that might cause issues
+  trailingSlash: true,
 }
 
 mergeConfig(nextConfig, userConfig)
