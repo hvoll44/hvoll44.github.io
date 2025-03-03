@@ -268,7 +268,7 @@ export default function Home() {
                     <img
                       alt="Hans Voll"
                       className="aspect-square h-full w-full rounded-lg object-cover"
-                      src="/placeholder.svg?height=400&width=400"
+                      src="/hans.jpeg?height=200&width=200"
                     />
                   </div>
                 </div>
