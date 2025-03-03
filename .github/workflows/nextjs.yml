@@ -16,6 +16,7 @@ concurrency:
 
 env:
   NEXT_TELEMETRY_DISABLED: 1
+  GITHUB_PAGES: true
 
 jobs:
   build:
@@ -41,7 +42,6 @@ jobs:
           echo "Node version: $(node -v)"
           echo "NPM version: $(npm -v)"
           echo "Starting build..."
-          mkdir -p out
           npm run build
           echo "Build complete. Checking directory structure:"
           ls -la
@@ -51,6 +51,8 @@ jobs:
           ls -la out/_next || echo "_next directory not found"
           echo "Checking for index.html:"
           find out -name "index.html"
+          echo "Checking file contents:"
+          cat out/index.html || echo "index.html not found or empty"
       - name: Fix permissions
         run: chmod -R a+rx out
       - name: Upload artifact

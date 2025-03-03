@@ -9,6 +9,8 @@ try {
 const nextConfig = {
   output: 'export',
   distDir: '.next',
+  basePath: process.env.GITHUB_ACTIONS ? '/hvoll44.github.io' : '',
+  assetPrefix: process.env.GITHUB_ACTIONS ? '/hvoll44.github.io/' : '',
   images: {
     unoptimized: true,
   },
