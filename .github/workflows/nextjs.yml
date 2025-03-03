@@ -16,7 +16,6 @@ concurrency:
 
 env:
   NEXT_TELEMETRY_DISABLED: 1
-  GITHUB_PAGES: true
 
 jobs:
   build:
@@ -46,13 +45,13 @@ jobs:
           echo "Build complete. Checking directory structure:"
           ls -la
           echo "Contents of out directory:"
-          ls -la out || echo "out directory is empty"
-          echo "Contents of out/_next directory:"
-          ls -la out/_next || echo "_next directory not found"
-          echo "Checking for index.html:"
-          find out -name "index.html"
-          echo "Checking file contents:"
-          cat out/index.html || echo "index.html not found or empty"
+          ls -la out
+          echo "Verifying index.html exists in root:"
+          test -f out/index.html && echo "✓ index.html found" || echo "✗ index.html missing"
+          echo "Checking index.html content:"
+          cat out/index.html | head -n 20
+          echo "Checking _next directory structure:"
+          ls -R out/_next || echo "_next directory structure issue"
       - name: Fix permissions
         run: chmod -R a+rx out
       - name: Upload artifact
