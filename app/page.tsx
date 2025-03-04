@@ -75,17 +75,17 @@ export default function Home() {
     {
       name: "Frontend",
       icon: <Code className="h-6 w-6" />,
-      skills: ["Angular", "Blazor", "HTML/CSS", "JavaScript", "TypeScript", "Responsive Design"],
+      skills: ["React", "Angular", "Flutter", "HTML/CSS", "JavaScript", "TypeScript"],
     },
     {
       name: "Backend",
       icon: <Server className="h-6 w-6" />,
-      skills: ["C#", "ASP.NET", "Python", "Java", "REST APIs", "Microservices"],
+      skills: ["C#", "Python", "Java", "ASP.NET", "REST APIs", "Microservices"],
     },
     {
       name: "Database",
       icon: <Database className="h-6 w-6" />,
-      skills: ["SQL Server", "Entity Framework", "SQLite", "Database Design", "Stored Procedures"],
+      skills: ["SQL Server", "PostgreSQL", "MySQL", "SQLite", "Database Design", "Stored Procedures"],
     },
     {
       name: "DevOps & Cloud",
@@ -361,34 +361,61 @@ export default function Home() {
                 </h2>
               </div>
               <p className="max-w-[85%] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Experienced engineer with a strong focus on high-performance, low-maintenance systems. Skilled in
-                collaborating with Agile teams to design, develop, and support technical solutions. Proficient in
-                building identity platforms in Azure and applying CI/CD techniques to enhance software development
-                processes.
+              Results-driven Full Stack Developer with a passion for building scalable, maintainable, and efficient
+              software systems. Adept at translating complex requirements into technical solutions. Leverages
+              comprehensive skill set that spans front-end and back-end development. Skilled in collaborating across
+              teams and delivering high-quality code that aligns with both business goals and technical excellence
               </p>
 
               <div ref={aboutCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 w-full">
-                {[0, 1, 2].map((index) => (
                   <motion.div
-                    key={index}
-                    custom={index}
                     variants={cardVariants}
                     initial="hidden"
                     animate={aboutCardsInView ? "visible" : "hidden"}
                   >
                     <Card className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 hover:shadow-md transition-shadow">
                       <CardHeader className="pb-2">
-                        <CardTitle className="text-xl">Full Stack Development</CardTitle>
+                        <CardTitle className="text-xl">Full Stack</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <p className="text-muted-foreground">
-                          Building complete solutions from database design to user interfaces with a focus on performance
-                          and maintainability.
+                          Crafting end-to-end solutions with modern frameworks and best practices, from database architecture to responsive user interfaces.
                         </p>
                       </CardContent>
                     </Card>
                   </motion.div>
-                ))}
+                  <motion.div
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate={aboutCardsInView ? "visible" : "hidden"}
+                  >
+                    <Card className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2">
+                        <CardTitle className="text-xl">Backend</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-muted-foreground">
+                          Building robust server-side systems with C# and Python, implementing scalable APIs and efficient data processing pipelines.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                  <motion.div
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate={aboutCardsInView ? "visible" : "hidden"}
+                  >
+                    <Card className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2">
+                        <CardTitle className="text-xl">Frontend</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-muted-foreground">
+                          Creating intuitive and responsive user interfaces using React and Angular, focusing on performance and user experience.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
               </div>
             </div>
           </div>
@@ -415,16 +442,13 @@ export default function Home() {
             </div>
 
             <div ref={experienceTimelineRef} className="space-y-12">
-              {[0, 1, 2].map((index) => (
                 <motion.div
-                  key={index}
-                  custom={index}
                   variants={timelineVariants}
                   initial="hidden"
                   animate={experienceTimelineInView ? "visible" : "hidden"}
                   className="relative pl-8 border-l border-gray-200 dark:border-gray-800"
                 >
-                  <div className="absolute w-4 h-4 bg-primary rounded-full -left-[9px] top-1"></div>
+                  <div className="absolute w-4 h-4 bg-primary rounded-full -left-[8px] top-0"></div>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <h3 className="text-2xl font-bold">Software Developer</h3>
@@ -459,7 +483,80 @@ export default function Home() {
                     </div>
                   </div>
                 </motion.div>
-              ))}
+                <motion.div
+                  variants={timelineVariants}
+                  initial="hidden"
+                  animate={experienceTimelineInView ? "visible" : "hidden"}
+                  className="relative pl-8 border-l border-gray-200 dark:border-gray-800"
+                >
+                  <div className="absolute w-4 h-4 bg-gray-400 rounded-full -left-[8px] top-0"></div>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-2xl font-bold">Full Stack Developer</h3>
+                      <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+                        Feb 2021 - Mar 2022
+                      </Badge>
+                    </div>
+                    <p className="text-lg text-muted-foreground">CDYNE Corp.</p>
+                    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+                      <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-400">
+                        <li>
+                        Designed, developed, and maintained software applications using C# and ASP.Net. Worked in full stack
+                        capacity on both front end websites and back end applications
+                        </li>
+                        <li>
+                        Created single-page applications in Blazor and Angular. Incorporated Entity Framework on both code-
+first and database-first projects. Reverse engineered existing databases to generate data models in
+.Net, and used LINQ to SQL to communicate with database.
+                        </li>
+                        <li>
+                        Created and maintained databases using Microsoft SQL Server. Designed tables, wrote stored
+                        procedures, created user defined types, and utilized data views.
+                        </li>
+                        <li>
+                        Built and consumed RESTful web APIs using HTTP methods. Utilized Swagger for automated
+                        documentation and Postman for testing endpoints.
+                        </li>
+                        <li>
+                        Collaborated with team on development projects using Azure DevOps. Incorporated Git source control,
+work tracking, and continuous integration and delivery. Generated pull requests, completed work items,
+and created new features.
+                        </li>
+                        <li>
+                        Used Identity Server to provide single-sign-on functionality across multiple software products. Used
+JWT Authentication with web tokens, claims, and schemes to verify access.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
+                <motion.div
+                  variants={timelineVariants}
+                  initial="hidden"
+                  animate={experienceTimelineInView ? "visible" : "hidden"}
+                  className="relative pl-8 border-l border-gray-200 dark:border-gray-800"
+                >
+                  <div className="absolute w-4 h-4 bg-gray-400 rounded-full -left-[8px] top-0"></div>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-2xl font-bold">Geophysicist</h3>
+                      <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+                        May 2017 - Jan 2021
+                      </Badge>
+                    </div>
+                    <p className="text-lg text-muted-foreground">NAEVA Geophysics Inc.</p>
+                    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+                      <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-400">
+                        <li>
+                        Automated ETL workflows with Python scripts enabling seamless flow across data sources.
+                        </li>
+                        <li>
+                        Designed and developed a Xamarin mobile app with local data storage functionality in SQLite.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
             </div>
           </div>
         </section>
@@ -587,10 +684,46 @@ export default function Home() {
             </div>
 
             <div ref={educationCardsRef} className="mx-auto max-w-4xl mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[0, 1].map((index) => (
                 <motion.div
-                  key={index}
-                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate={educationCardsInView ? "visible" : "hidden"}
+                  className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg"
+                >
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-700"></div>
+                  <div className="p-8">
+                    <div className="mb-4 inline-block rounded-lg bg-blue-100 dark:bg-blue-900/30 p-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-blue-600 dark:text-blue-400"
+                      >
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">Economics (BA)</h3>
+                    <p className="text-lg text-muted-foreground mb-4">Metropolitan State University of Denver</p>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">Graduation</span>
+                        <span className="text-sm font-medium">May 2011</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">GPA</span>
+                        <span className="text-sm font-medium">3.8</span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+                <motion.div
                   variants={cardVariants}
                   initial="hidden"
                   animate={educationCardsInView ? "visible" : "hidden"}
@@ -629,7 +762,6 @@ export default function Home() {
                     </div>
                   </div>
                 </motion.div>
-              ))}
             </div>
           </div>
         </section>
@@ -649,16 +781,13 @@ export default function Home() {
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Get In Touch</h2>
               </div>
-              <p className="max-w-[85%] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[85%] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mb-12">
                 Let's connect and discuss how I can contribute to your team
               </p>
             </div>
 
             <div ref={contactCardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[0, 1].map((index) => (
                 <motion.div
-                  key={index}
-                  custom={index}
                   variants={cardVariants}
                   initial="hidden"
                   animate={contactCardsInView ? "visible" : "hidden"}
@@ -674,7 +803,22 @@ export default function Home() {
                     <p className="mt-4 text-sm text-muted-foreground">Feel free to call during business hours</p>
                   </div>
                 </motion.div>
-              ))}
+                <motion.div
+                variants={cardVariants}
+                initial="hidden"
+                animate={contactCardsInView ? "visible" : "hidden"}
+                className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg"
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-blue-600"></div>
+                <div className="p-8">
+                  <div className="mb-6 inline-block rounded-full bg-primary/10 p-3">
+                    <Mail className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2">Email</h3>
+                  <p className="text-xl text-primary">hvoll44@gmail.com</p>
+                  <p className="mt-4 text-sm text-muted-foreground">Shoot me an email anytime</p>
+                </div>
+              </motion.div>
             </div>
 
             <div className="mt-12 text-center">
