@@ -94,6 +94,29 @@ export default function Home() {
     },
   ]
 
+  const publishedApps = [
+    {
+      title: "Scorecard",
+      description: "I developed Scorecard based on the idea of a clean intuitive interface for keeping score for any type of game.",
+      technologies: ["Flutter", "Dart", "SQLite","MVVM"],
+      screenshot: "/scorecard-screenshot.png",
+      links: {
+        playStore: "https://play.google.com/store/apps/details?id=com.companyname.scorecard",
+        appStore: "https://apps.apple.com/us/app/scorecard-golf/id6450650030",
+      },
+    },
+    {
+      title: "WeatherView",
+      description: "I've always liked the detailed forecasts of the National Weather Service, but could never find an app that integrated it with a clean UX. So I built my own.",
+      technologies: ["Flutter", "Dart", "REST API"],
+      screenshot: "/weatherview-screenshot.png",
+      links: {
+        playStore: "https://play.google.com/store/apps/details?id=com.hvoll.weatherview",
+        appStore: "https://apps.apple.com/us/app/weatherview-vertical-weather/id6474476321",
+      },
+    },
+  ]
+
   const projects = [
     {
       title: "Financial Data Processing System",
@@ -609,6 +632,66 @@ JWT Authentication with web tokens, claims, and schemes to verify access.
                   </Card>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Published Apps Section */}
+        <section className="py-20 sm:py-32 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 relative">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-800 to-transparent"></div>
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl lg:text-center">
+              <h2 className="text-base font-semibold leading-7 text-blue-600">Published Apps</h2>
+              <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+                Mobile Applications
+              </p>
+              <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+                Cross-platform mobile applications built with Flutter and published on the App Store and Google Play Store.
+              </p>
+            </div>
+            <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+              <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+                {publishedApps.map((app) => (
+                  <Card key={app.title} className="flex flex-col overflow-hidden bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-2xl">{app.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-1 p-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                          <img
+                            src={app.screenshot}
+                            alt={`${app.title} screenshot`}
+                            className="w-full h-auto object-contain"
+                            width={180}
+                            height={320}
+                          />
+                        <div className="space-y-4">
+                          <p className="text-sm text-gray-600 dark:text-gray-400">{app.description}</p>
+                          <div className="flex flex-wrap gap-2">
+                            {app.technologies.map((tech) => (
+                              <Badge key={tech} variant="secondary" className="bg-gray-100 dark:bg-gray-800">
+                                {tech}
+                              </Badge>
+                            ))}
+                          </div>
+                          <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                            <Link href={app.links.playStore} target="_blank" rel="noopener noreferrer" className="flex-1">
+                              <Button variant="outline" size="sm" className="w-full">
+                                Google Play <ExternalLink className="ml-2 h-4 w-4" />
+                              </Button>
+                            </Link>
+                            <Link href={app.links.appStore} target="_blank" rel="noopener noreferrer" className="flex-1">
+                              <Button variant="outline" size="sm" className="w-full">
+                                App Store <ExternalLink className="ml-2 h-4 w-4" />
+                              </Button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </dl>
             </div>
           </div>
         </section>
