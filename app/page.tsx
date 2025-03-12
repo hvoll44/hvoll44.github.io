@@ -102,7 +102,7 @@ export default function Home() {
       screenshot: "/scorecard-screenshot.png",
       links: {
         playStore: "https://play.google.com/store/apps/details?id=com.companyname.scorecard",
-        appStore: "https://apps.apple.com/us/app/scorecard-golf/id6450650030",
+        appStore: "https://apps.apple.com/us/app/scorecard-for-any-game/id6695726112",
       },
     },
     {
@@ -111,8 +111,8 @@ export default function Home() {
       technologies: ["Flutter", "Dart", "REST API"],
       screenshot: "/weatherview-screenshot.png",
       links: {
-        playStore: "https://play.google.com/store/apps/details?id=com.hvoll.weatherview",
-        appStore: "https://apps.apple.com/us/app/weatherview-vertical-weather/id6474476321",
+        playStore: "https://play.google.com/store/apps/details?id=com.hansvoll.verticalweather",
+        appStore: "https://apps.apple.com/us/app/weather-view/id6739949210",
       },
     },
   ]
